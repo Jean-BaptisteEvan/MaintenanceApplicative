@@ -23,7 +23,7 @@ class GildedRoseTest {
                 new Item("Patate", 1, 1),
                 new Item("Patate",0,1),
                 new Item(GildedRose.CONCERT, 0, 10),
-                new Item(GildedRose.BRIE, 0, 10)
+                new Item(GildedRose.BRIE, 0, 10),
         };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -43,4 +43,26 @@ class GildedRoseTest {
         assertEquals(-1, app.items[6].sellIn);
     }
 
+    @Test
+    void conjured(){
+        Item[] items = new Item[]{
+                new Item(GildedRose.CONJURED, 2, 10)
+        };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(8, app.items[0].quality);
+        assertEquals(1, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals(6, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals(2, app.items[0].quality);
+        assertEquals(-1, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+        assertEquals(-2, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+        assertEquals(-3, app.items[0].sellIn);
+    }
 }
