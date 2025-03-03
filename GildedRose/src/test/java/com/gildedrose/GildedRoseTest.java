@@ -8,7 +8,7 @@ class GildedRoseTest {
 
     @Test
     void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 2) };
+        BetterItem[] items = new BetterItem[] { new Other("foo", 0, 2) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -16,17 +16,17 @@ class GildedRoseTest {
 
     @Test
     void cassoulet() {
-        Item[] items = new Item[]{
-                new Item(GildedRose.BRIE, 5, 10),
-                new Item(GildedRose.SULFURAS, 0, 80),
-                new Item(GildedRose.CONCERT, 4, 1),
-                new Item("Patate", 1, 1),
-                new Item("Patate",0,0),
-                new Item(GildedRose.CONCERT, 0, 10),
-                new Item(GildedRose.BRIE, 0, 10),
-                new Item(GildedRose.CONCERT, 30, 50),
-                new Item(GildedRose.CONCERT, 30, 40),
-                new Item(GildedRose.BRIE, 0, 50),
+        BetterItem[] items = new BetterItem[]{
+                new Brie(5, 10),
+                new Sulfuras(0, 80),
+                new Concert(4, 1),
+                new Other("Patate", 1, 1),
+                new Other("Patate",0,0),
+                new Concert(0, 10),
+                new Brie(0, 10),
+                new Concert(30, 50),
+                new Concert(30, 40),
+                new Brie(0, 50),
 
         };
         GildedRose app = new GildedRose(items);
@@ -53,8 +53,8 @@ class GildedRoseTest {
 
     @Test
     void conjured(){
-        Item[] items = new Item[]{
-                new Item(GildedRose.CONJURED, 1, 8)
+        BetterItem[] items = new BetterItem[]{
+                new Conjured(1, 8)
         };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
