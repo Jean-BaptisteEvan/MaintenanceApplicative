@@ -17,13 +17,13 @@ class GildedRoseTest {
     @Test
     void cassoulet() {
         Item[] items = new Item[]{
-                new Item(GildedRose.AGED_BRIE, 5, 10),
-                new Item(GildedRose.SULFURAS_HAND_OF_RAGNAROS, 0, 80),
-                new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT, 4, 1),
+                new Item(GildedRose.BRIE, 5, 10),
+                new Item(GildedRose.SULFURAS, 0, 80),
+                new Item(GildedRose.CONCERT, 4, 1),
                 new Item("Patate", 1, 1),
                 new Item("Patate",0,1),
-                new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT, 0, 10),
-                new Item(GildedRose.AGED_BRIE, 0, 10)
+                new Item(GildedRose.CONCERT, 0, 10),
+                new Item(GildedRose.BRIE, 0, 10)
         };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -41,9 +41,6 @@ class GildedRoseTest {
         assertEquals(-1, app.items[5].sellIn);
         assertEquals(12, app.items[6].quality);
         assertEquals(-1, app.items[6].sellIn);
-
-
-
     }
 
 }
