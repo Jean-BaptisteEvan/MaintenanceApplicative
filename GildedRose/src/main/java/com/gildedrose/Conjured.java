@@ -1,8 +1,8 @@
 package com.gildedrose;
 
 public class Conjured extends BetterItem {
-    public Conjured(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public Conjured(int sellIn, int quality) {
+        super(GildedRose.CONJURED, sellIn, quality);
     }
 
     @Override

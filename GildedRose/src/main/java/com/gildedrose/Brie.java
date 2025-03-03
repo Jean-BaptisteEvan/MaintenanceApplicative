@@ -1,8 +1,8 @@
 package com.gildedrose;
 
 public class Brie extends BetterItem {
-    public Brie(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public Brie(int sellIn, int quality) {
+        super(GildedRose.BRIE, sellIn, quality);
     }
 
     @Override

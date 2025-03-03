@@ -1,8 +1,8 @@
 package com.gildedrose;
 
 public class Sulfuras extends BetterItem{
-    public Sulfuras(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public Sulfuras(int sellIn, int quality) {
+        super(GildedRose.SULFURAS, sellIn, quality);
     }
 
     @Override

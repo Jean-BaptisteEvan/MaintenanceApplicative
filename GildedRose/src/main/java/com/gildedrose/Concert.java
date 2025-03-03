@@ -1,8 +1,8 @@
 package com.gildedrose;
 
 public class Concert extends BetterItem{
-    public Concert(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public Concert(int sellIn, int quality) {
+        super(GildedRose.CONCERT, sellIn, quality);
     }
 
     @Override

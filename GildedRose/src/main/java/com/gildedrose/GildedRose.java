@@ -5,18 +5,18 @@ class GildedRose {
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String CONCERT = "Backstage passes to a TAFKAL80ETC concert";
     public static final String CONJURED = "Conjured Mana Cake";
-    Item[] items;
+    BetterItem[] items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(BetterItem[] items) {
         this.items = items;
     }
 
     public void updateQuality(){
-        for (Item item : items) {
-            handleItems(item);
+        for (BetterItem item : items) {
+            item.updateQuality();
         }
     }
-
+    /*
     public void handleItems(Item item){
         switch (item.name) {
             case BRIE:
@@ -81,4 +81,5 @@ class GildedRose {
                 item.quality--;
         }
     }
+    */
 }
