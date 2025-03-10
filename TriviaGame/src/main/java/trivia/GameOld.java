@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 
-// TODO refactor me
+// DO NOT REFACTOR ME
 public class GameOld implements IGame {
    ArrayList players = new ArrayList();
    int[] places = new int[6];
@@ -64,8 +64,8 @@ public class GameOld implements IGame {
             if (places[currentPlayer] > 12) places[currentPlayer] = places[currentPlayer] - 12;
 
             System.out.println(players.get(currentPlayer)
-                               + "'s new location is "
-                               + places[currentPlayer]);
+                    + "'s new location is "
+                    + places[currentPlayer]);
             System.out.println("The category is " + currentCategory());
             askQuestion();
          } else {
@@ -79,8 +79,8 @@ public class GameOld implements IGame {
          if (places[currentPlayer] > 12) places[currentPlayer] = places[currentPlayer] - 12;
 
          System.out.println(players.get(currentPlayer)
-                            + "'s new location is "
-                            + places[currentPlayer]);
+                 + "'s new location is "
+                 + places[currentPlayer]);
          System.out.println("The category is " + currentCategory());
          askQuestion();
       }
@@ -115,12 +115,12 @@ public class GameOld implements IGame {
    public boolean handleCorrectAnswer() {
       if (inPenaltyBox[currentPlayer]) {
          if (isGettingOutOfPenaltyBox) {
-            System.out.println("Answer was corrent!!!!");
+            System.out.println("Answer was correct!!!!");
             purses[currentPlayer]++;
             System.out.println(players.get(currentPlayer)
-                               + " now has "
-                               + purses[currentPlayer]
-                               + " Gold Coins.");
+                    + " now has "
+                    + purses[currentPlayer]
+                    + " Gold Coins.");
 
             boolean winner = didPlayerWin();
             currentPlayer++;
@@ -135,12 +135,12 @@ public class GameOld implements IGame {
 
       } else {
 
-         System.out.println("Answer was corrent!!!!");
+         System.out.println("Answer was correct!!!!");
          purses[currentPlayer]++;
          System.out.println(players.get(currentPlayer)
-                            + " now has "
-                            + purses[currentPlayer]
-                            + " Gold Coins.");
+                 + " now has "
+                 + purses[currentPlayer]
+                 + " Gold Coins.");
 
          boolean winner = didPlayerWin();
          currentPlayer++;
@@ -158,6 +158,16 @@ public class GameOld implements IGame {
       currentPlayer++;
       if (currentPlayer == players.size()) currentPlayer = 0;
       return true;
+   }
+
+   @Override
+   public boolean isGameInProgress() {
+      throw new UnsupportedOperationException("Not supported yet.");
+   }
+
+   @Override
+   public void isGameValid() {
+      throw new UnsupportedOperationException("Not supported yet.");
    }
 
 
