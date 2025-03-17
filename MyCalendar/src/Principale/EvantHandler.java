@@ -2,6 +2,7 @@ package Principale;
 
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -9,13 +10,34 @@ import java.util.Scanner;
 public class EvantHandler {
     Scanner scanner = new Scanner(System.in);
 
+    public String connectUtilisateur(HashMap<String,String> user_passwords){
+        System.out.println("Nom d'utilisateur: ");
+        String user = scanner.nextLine();
+        if(user_passwords.containsKey(user)){
+            System.out.println("Entrer votre mot de passe : ");
+            String password = scanner.nextLine();
+            if (user_passwords.get(user).equals(password)) {
+                return user;
+            }
+        }
+        return null;
+    }
 
+    public String createUtilisateur(HashMap<String, String> user_passwords){
+        System.out.print("Nom d'utilisateur: ");
+        String utilisateur = scanner.nextLine();
+        System.out.print("Mot de passe: ");
+        String motDePasse = scanner.nextLine();
+        System.out.print("Répéter mot de passe: ");
+        if (scanner.nextLine().equals(motDePasse)) {
+            user_passwords.put(utilisateur, motDePasse);
+        } else {
+            System.out.println("Les mots de passes ne correspondent pas...");
+            utilisateur = null;
+        }
+        return utilisateur;
+    }
 
-    /*
-    System.out.println("2 - Ajouter un rendez-vous perso");
-    System.out.println("3 - Ajouter une réunion");
-    System.out.println("4 - Ajouter un évènement périodique");
-     */
     public void ajoutRDV(CalendarManager calendar, String utilisateur){
         // Ajout simplifié d'un RDV personnel
         System.out.print("Titre de l'événement : ");

@@ -16,8 +16,8 @@ public class CalendarManager {
         /*
         for(Event e2 : this.events) {
             if(conflit(e,e2)){
-                System.out.println("Vous avez déjà quelque chose de prévu dans votre calendrier à ce moment là !")
-                System.out.println("type non ajouté !")
+                System.out.println("Vous avez déjà quelque chose de prévu dans votre calendrier à ce moment là !");
+                System.out.println("type non ajouté !");
                 return;
             }
         }
