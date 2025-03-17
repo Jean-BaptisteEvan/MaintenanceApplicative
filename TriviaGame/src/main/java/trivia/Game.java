@@ -104,7 +104,9 @@ public class Game implements IGame {
 
    public boolean handleCorrectAnswer() {
       Player p = players.get(currentPlayer);
-      //p.
+      if (p.getStreak() >= 3) {
+         p.setScore(p.getScore() + 1);
+      }
       if (p.isInJail()) {
          if (isGettingOutOfPenaltyBox) {
             return correctAnswer();
@@ -122,9 +124,6 @@ public class Game implements IGame {
       Player p = players.get(currentPlayer);
       p.addStreak();
       System.out.println("Answer was correct!!!!");
-      if (p.getStreak() >= 3) {
-         p.setScore(p.getScore() + 1);
-      }
       p.setScore(p.getScore() + 1);
       System.out.println(players.get(currentPlayer).getName() + " now has " + p.getScore() + " Gold Coins.");
 
@@ -153,7 +152,7 @@ public class Game implements IGame {
    }
 
    private boolean didPlayerWin() {
-      return players.get(currentPlayer).getScore() >= MAX_PLAYER_COUNT;
+      return players.get(currentPlayer).getScore() < MAX_PLAYER_COUNT;
    }
 
    @Override
