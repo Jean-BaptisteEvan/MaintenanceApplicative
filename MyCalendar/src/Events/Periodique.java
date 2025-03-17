@@ -1,13 +1,10 @@
 package Events;
 
 import Principale.Event;
-
-import java.time.LocalDateTime;
+import ValueObject.*;
 
 public class Periodique extends Event {
-    public Periodique(String title, String proprietaire, LocalDateTime dateDebut, int frequenceJours) {
-        super("PERIODIQUE", title, proprietaire, dateDebut,  0, "", "",  frequenceJours);
+    public Periodique( TitreEvent title, ProprioEvent proprietaire, DateEvent dateDebut, Frequence frequenceJours) {
+        super(EventType.PERIODIQUE, title, proprietaire, dateDebut,  new DureeEvent(0), new LieuEvent(""), new ListeParticipant(), frequenceJours);
     }
-
-    //calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur, localDate3, 0, "", "", frequence);
 }

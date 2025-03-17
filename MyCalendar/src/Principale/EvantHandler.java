@@ -1,5 +1,11 @@
 package Principale;
 
+import Events.Periodique;
+import Events.RendezVous;
+import Events.Reunion;
+import ValueObject.*;
+
+import java.io.LineNumberInputStream;
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
 import java.util.HashMap;
@@ -39,50 +45,54 @@ public class EvantHandler {
     }
 
     public void ajoutRDV(CalendarManager calendar, String utilisateur){
-        // Ajout simplifié d'un RDV personnel
         System.out.print("Titre de l'événement : ");
-        String titre = scanner.nextLine();
-        LocalDateTime localDate = makeDate();
+        TitreEvent titre = new TitreEvent(scanner.nextLine());
+
+        DateEvent localDate = new DateEvent();
+
         System.out.print("Durée (en minutes) : ");
-        int duree = Integer.parseInt(scanner.nextLine());
+        DureeEvent duree = new DureeEvent(scanner.nextInt());
 
-        calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur, localDate, duree, "", "", 0);
-
+        calendar.ajouterEvent(new RendezVous(titre,new ProprioEvent(utilisateur),localDate,duree));
         System.out.println("Événement ajouté.");
     }
 
     public void ajoutReunion(CalendarManager calendar, String utilisateur){
         System.out.print("Titre de l'événement : ");
-        String titre2 = scanner.nextLine();
-        LocalDateTime localDate2 = makeDate();
-        System.out.print("Durée (en minutes) : ");
-        int duree2 = Integer.parseInt(scanner.nextLine());
-        System.out.println("Lieu :");
-        String lieu = scanner.nextLine();
+        TitreEvent titre = new TitreEvent(scanner.nextLine());
 
-        StringBuilder participants = new StringBuilder(utilisateur);
+        DateEvent localDate = new DateEvent();
+
+        System.out.print("Durée (en minutes) : ");
+        DureeEvent duree = new DureeEvent(scanner.nextInt());
+
+        System.out.println("Lieu :");
+        LieuEvent lieu = new LieuEvent(scanner.nextLine());
+
+        ListeParticipant participants = new ListeParticipant();
 
         System.out.println("Ajouter un participant ? (oui / non)");
-        while (scanner.nextLine().equals("oui"))
-        {
+        while (scanner.nextLine().equals("oui")) {
             System.out.print("Participants : " + participants);
-            participants.append(", ").append(scanner.nextLine());
+            participants.addParticipant(new Participant(scanner.nextLine()));
         }
 
-        calendar.ajouterEvent("REUNION", titre2, utilisateur, localDate2, duree2, lieu, participants.toString(), 0);
-
+        Event e = new Reunion(titre,new ProprioEvent(utilisateur),localDate,duree,lieu,participants);
+        calendar.ajouterEvent(e);
         System.out.println("Événement ajouté.");
     }
 
     public void ajoutPeriodique(CalendarManager calendar, String utilisateur){
         System.out.print("Titre de l'événement : ");
-        String titre3 = scanner.nextLine();
-        LocalDateTime localDate3 = makeDate();
+        TitreEvent titre = new TitreEvent(scanner.nextLine());
+
+        DateEvent localDate = new DateEvent();
+
         System.out.print("Frequence (en jours) : ");
-        int frequence = Integer.parseInt(scanner.nextLine());
+        Frequence freq = new Frequence(scanner.nextInt());
 
-        calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur, localDate3, 0, "", "", frequence);
-
+        Event e = new Periodique(titre,new ProprioEvent(utilisateur),localDate,freq);
+        calendar.ajouterEvent(e);
         System.out.println("Événement ajouté.");
     }
 
