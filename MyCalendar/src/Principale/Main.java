@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         CalendarManager calendar = new CalendarManager();
+        EvantHandler gestEvent = new EvantHandler();
         Scanner scanner = new Scanner(System.in);
         String utilisateur = null;
         boolean continuer = true;
@@ -110,6 +111,8 @@ public class Main {
                                 break;
 
                             case "2":
+                                gestEvent.event_mois(calendar);
+                                /*
                                 System.out.print("Entrez l'année (AAAA) : ");
                                 int anneeMois = Integer.parseInt(scanner.nextLine());
                                 System.out.print("Entrez le mois (1-12) : ");
@@ -118,10 +121,12 @@ public class Main {
                                 LocalDateTime debutMois = LocalDateTime.of(anneeMois, mois, 1, 0, 0);
                                 LocalDateTime finMois = debutMois.plusMonths(1).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutMois, finMois));
+                                afficherListe(calendar.eventsDansPeriode(debutMois, finMois));*/
                                 break;
 
                             case "3":
+                                gestEvent.event_semaine(calendar);
+                                /*
                                 System.out.print("Entrez l'année (AAAA) : ");
                                 int anneeSemaine = Integer.parseInt(scanner.nextLine());
                                 System.out.print("Entrez le numéro de semaine (1-52) : ");
@@ -135,9 +140,12 @@ public class Main {
                                 LocalDateTime finSemaine = debutSemaine.plusDays(7).minusSeconds(1);
 
                                 afficherListe(calendar.eventsDansPeriode(debutSemaine, finSemaine));
+                                */
                                 break;
 
                             case "4":
+                                gestEvent.event_jour(calendar);
+                                /*
                                 System.out.print("Entrez l'année (AAAA) : ");
                                 int anneeJour = Integer.parseInt(scanner.nextLine());
                                 System.out.print("Entrez le mois (1-12) : ");
@@ -149,12 +157,15 @@ public class Main {
                                 LocalDateTime finJour = debutJour.plusDays(1).minusSeconds(1);
 
                                 afficherListe(calendar.eventsDansPeriode(debutJour, finJour));
+                                */
                                 break;
                         }
                         break;
 
                     case "2":
                         // Ajout simplifié d'un RDV personnel
+                        gestEvent.ajoutRDV(calendar, utilisateur);
+                        /*
                         System.out.print("Titre de l'événement : ");
                         String titre = scanner.nextLine();
                         LocalDateTime localDate = makeDate();
@@ -166,10 +177,13 @@ public class Main {
                                 "", "", 0);
 
                         System.out.println("Événement ajouté.");
+                        */
                         break;
 
                     case "3":
                         // Ajout simplifié d'une réunion
+                        gestEvent.ajoutReunion(calendar, utilisateur);
+                        /*
                         System.out.print("Titre de l'événement : ");
                         String titre2 = scanner.nextLine();
                         LocalDateTime localDate2 = makeDate();
@@ -192,11 +206,13 @@ public class Main {
                                 localDate2, duree2,
                                 lieu, participants, 0);
 
-                        System.out.println("Événement ajouté.");
+                        System.out.println("Événement ajouté.");*/
                         break;
 
                         case "4":
                         // Ajout simplifié d'une réunion
+                        gestEvent.ajoutPeriodique(calendar, utilisateur);
+                        /*
                         System.out.print("Titre de l'événement : ");
                         String titre3 = scanner.nextLine();
                         LocalDateTime localDate3 = makeDate();
@@ -208,6 +224,7 @@ public class Main {
                                 "", "", frequence);
 
                         System.out.println("Événement ajouté.");
+                        */
                         break;
 
                     default:
