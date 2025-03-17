@@ -3,7 +3,7 @@ package Principale;
 import java.util.ArrayList;
 
 public class ListEvent {
-    private ArrayList<Event> listEvents;
+    private final ArrayList<Event> listEvents;
 
     public ListEvent() {
         listEvents = new ArrayList<>();
