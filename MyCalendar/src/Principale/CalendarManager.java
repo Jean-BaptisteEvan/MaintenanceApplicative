@@ -1,3 +1,5 @@
+package Principale;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +11,15 @@ public class CalendarManager {
         this.events = new ArrayList<>();
     }
 
-    public void ajouterEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
-                             String lieu, String participants, int frequenceJours) {
+    public void ajouterEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants, int frequenceJours) {
         Event e = new Event(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
+        /*
+        for(Event e2 : this.events) {
+            if(conflit(e,e2)){
+                return;
+            }
+        }
+        */
         events.add(e);
     }
 
@@ -42,10 +50,7 @@ public class CalendarManager {
             return false; // Simplification abusive
         }
 
-        if (e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut)) {
-            return true;
-        }
-        return false;
+        return e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut);
     }
 
     public void afficherEvenements() {

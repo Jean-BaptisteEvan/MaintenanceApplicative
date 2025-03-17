@@ -1,3 +1,5 @@
+package Principale;
+
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
 import java.util.List;
@@ -11,8 +13,8 @@ public class Main {
         String utilisateur = null;
         boolean continuer = true;
 
-        String utilisateurs[] = new String[99];
-        String motsDePasses[] = new String[99];
+        String[] utilisateurs = new String[99];
+        String[] motsDePasses = new String[99];
         int nbUtilisateurs = 0;
 
         while (true) {
@@ -20,18 +22,12 @@ public class Main {
             if (utilisateur == null) {
                 System.out.println("  _____         _                   _                __  __");
                 System.out.println(" / ____|       | |                 | |              |  \\/  |");
-                System.out.println(
-                        "| |       __ _ | |  ___  _ __    __| |  __ _  _ __  | \\  / |  __ _  _ __    __ _   __ _   ___  _ __");
-                System.out.println(
-                        "| |      / _` || | / _ \\| '_ \\  / _` | / _` || '__| | |\\/| | / _` || '_ \\  / _` | / _` | / _ \\| '__|");
-                System.out.println(
-                        "| |____ | (_| || ||  __/| | | || (_| || (_| || |    | |  | || (_| || | | || (_| || (_| ||  __/| |");
-                System.out.println(
-                        " \\_____| \\__,_||_| \\___||_| |_| \\__,_| \\__,_||_|    |_|  |_| \\__,_||_| |_| \\__,_| \\__, | \\___||_|");
-                System.out.println(
-                        "                                                                                   __/ |");
-                System.out.println(
-                        "                                                                                  |___/");
+                System.out.println("| |       __ _ | |  ___  _ __    __| |  __ _  _ __  | \\  / |  __ _  _ __    __ _   __ _   ___  _ __");
+                System.out.println("| |      / _` || | / _ \\| '_ \\  / _` | / _` || '__| | |\\/| | / _` || '_ \\  / _` | / _` | / _ \\| '__|");
+                System.out.println("| |____ | (_| || ||  __/| | | || (_| || (_| || |    | |  | || (_| || | | || (_| || (_| ||  __/| |");
+                System.out.println(" \\_____| \\__,_||_| \\___||_| |_| \\__,_| \\__,_||_|    |_|  |_| \\__,_||_| |_| \\__,_| \\__, | \\___||_|");
+                System.out.println("                                                                                   __/ |");
+                System.out.println("                                                                                  |___/");
 
                 System.out.println("1 - Se connecter");
                 System.out.println("2 - Créer un compte");
@@ -161,21 +157,12 @@ public class Main {
                         // Ajout simplifié d'un RDV personnel
                         System.out.print("Titre de l'événement : ");
                         String titre = scanner.nextLine();
-                        System.out.print("Année (AAAA) : ");
-                        int annee = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Mois (1-12) : ");
-                        int moisRdv = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Jour (1-31) : ");
-                        int jourRdv = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Heure début (0-23) : ");
-                        int heure = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Minute début (0-59) : ");
-                        int minute = Integer.parseInt(scanner.nextLine());
+                        LocalDateTime localDate = makeDate();
                         System.out.print("Durée (en minutes) : ");
                         int duree = Integer.parseInt(scanner.nextLine());
 
                         calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
-                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree,
+                                localDate, duree,
                                 "", "", 0);
 
                         System.out.println("Événement ajouté.");
@@ -185,16 +172,7 @@ public class Main {
                         // Ajout simplifié d'une réunion
                         System.out.print("Titre de l'événement : ");
                         String titre2 = scanner.nextLine();
-                        System.out.print("Année (AAAA) : ");
-                        int annee2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Mois (1-12) : ");
-                        int moisRdv2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Jour (1-31) : ");
-                        int jourRdv2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Heure début (0-23) : ");
-                        int heure2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Minute début (0-59) : ");
-                        int minute2 = Integer.parseInt(scanner.nextLine());
+                        LocalDateTime localDate2 = makeDate();
                         System.out.print("Durée (en minutes) : ");
                         int duree2 = Integer.parseInt(scanner.nextLine());
                         System.out.println("Lieu :");
@@ -211,7 +189,7 @@ public class Main {
                         }
 
                         calendar.ajouterEvent("REUNION", titre2, utilisateur,
-                                LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), duree2,
+                                localDate2, duree2,
                                 lieu, participants, 0);
 
                         System.out.println("Événement ajouté.");
@@ -221,21 +199,12 @@ public class Main {
                         // Ajout simplifié d'une réunion
                         System.out.print("Titre de l'événement : ");
                         String titre3 = scanner.nextLine();
-                        System.out.print("Année (AAAA) : ");
-                        int annee3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Mois (1-12) : ");
-                        int moisRdv3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Jour (1-31) : ");
-                        int jourRdv3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Heure début (0-23) : ");
-                        int heure3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Minute début (0-59) : ");
-                        int minute3 = Integer.parseInt(scanner.nextLine());
+                        LocalDateTime localDate3 = makeDate();
                         System.out.print("Frequence (en jours) : ");
                         int frequence = Integer.parseInt(scanner.nextLine());
 
                         calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur,
-                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
+                                localDate3, 0,
                                 "", "", frequence);
 
                         System.out.println("Événement ajouté.");
@@ -260,5 +229,20 @@ public class Main {
                 System.out.println("- " + e.description());
             }
         }
+    }
+
+    private static LocalDateTime makeDate(){
+        Scanner scanner =  new Scanner(System.in);
+        System.out.print("Année (AAAA) : ");
+        int annee = Integer.parseInt(scanner.nextLine());
+        System.out.print("Mois (1-12) : ");
+        int moisRdv = Integer.parseInt(scanner.nextLine());
+        System.out.print("Jour (1-31) : ");
+        int jourRdv = Integer.parseInt(scanner.nextLine());
+        System.out.print("Heure début (0-23) : ");
+        int heure = Integer.parseInt(scanner.nextLine());
+        System.out.print("Minute début (0-59) : ");
+        int minute = Integer.parseInt(scanner.nextLine());
+        return LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute);
     }
 }
