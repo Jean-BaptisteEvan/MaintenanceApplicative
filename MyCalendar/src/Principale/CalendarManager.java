@@ -5,29 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarManager {
-    public List<Event> events;
+    public ListEvent events;
 
     public CalendarManager() {
-        this.events = new ArrayList<>();
+        this.events = new ListEvent();
     }
 
-    public void ajouterEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants, int frequenceJours) {
-        Event e = new Event(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
-        /*
-        for(Event e2 : this.events) {
-            if(conflit(e,e2)){
-                System.out.println("Vous avez déjà quelque chose de prévu dans votre calendrier à ce moment là !");
-                System.out.println("type non ajouté !");
-                return;
-            }
-        }
-        */
-        events.add(e);
+    public void ajouterEvent(Event event) {
+       this.events.ajoutEvent(event);
     }
 
     public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         List<Event> result = new ArrayList<>();
-        for (Event e : events) {
+        for (Event e : events.getEvents()) {
             if (e.type.equals("PERIODIQUE")) {
                 LocalDateTime temp = e.dateDebut;
                 while (temp.isBefore(fin)) {
@@ -56,7 +46,7 @@ public class CalendarManager {
     }
 
     public void afficherEvenements() {
-        for (Event e : events) {
+        for (Event e : events.getEvents()) {
             System.out.println(e.description());
         }
     }

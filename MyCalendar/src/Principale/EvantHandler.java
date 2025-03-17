@@ -46,9 +46,7 @@ public class EvantHandler {
         System.out.print("Durée (en minutes) : ");
         int duree = Integer.parseInt(scanner.nextLine());
 
-        calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
-                localDate, duree,
-                "", "", 0);
+        calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur, localDate, duree, "", "", 0);
 
         System.out.println("Événement ajouté.");
     }
@@ -143,18 +141,4 @@ public class EvantHandler {
         }
     }
 
-    private static LocalDateTime makeDate(){
-        Scanner scanner =  new Scanner(System.in);
-        System.out.print("Année (AAAA) : ");
-        int annee = Integer.parseInt(scanner.nextLine());
-        System.out.print("Mois (1-12) : ");
-        int moisRdv = Integer.parseInt(scanner.nextLine());
-        System.out.print("Jour (1-31) : ");
-        int jourRdv = Integer.parseInt(scanner.nextLine());
-        System.out.print("Heure début (0-23) : ");
-        int heure = Integer.parseInt(scanner.nextLine());
-        System.out.print("Minute début (0-59) : ");
-        int minute = Integer.parseInt(scanner.nextLine());
-        return LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute);
-    }
 }
