@@ -1,5 +1,6 @@
 package Principale;
 
+import Events.AffichageCalendrier;
 import Events.Periodique;
 import Events.RendezVous;
 import Events.Reunion;
@@ -97,47 +98,16 @@ public class EvantHandler {
     }
 
     public void event_mois(CalendarManager calendar){
-        System.out.print("Entrez l'année (AAAA) : ");
-        int anneeMois = Integer.parseInt(scanner.nextLine());
-        System.out.print("Entrez le mois (1-12) : ");
-        int mois = Integer.parseInt(scanner.nextLine());
-
-        LocalDateTime debutMois = LocalDateTime.of(anneeMois, mois, 1, 0, 0);
-        LocalDateTime finMois = debutMois.plusMonths(1).minusSeconds(1);
-
-        afficherListe(calendar.eventsDansPeriode(debutMois, finMois));
+        AffichageCalendrier.affichageFiltrer(scanner,0,calendar);
     }
 
     public void event_semaine(CalendarManager calendar){
-        System.out.print("Entrez l'année (AAAA) : ");
-        int anneeSemaine = Integer.parseInt(scanner.nextLine());
-        System.out.print("Entrez le numéro de semaine (1-52) : ");
-        int semaine = Integer.parseInt(scanner.nextLine());
-
-        LocalDateTime debutSemaine = LocalDateTime.now()
-                .withYear(anneeSemaine)
-                .with(WeekFields.of(Locale.FRANCE).weekOfYear(), semaine)
-                .with(WeekFields.of(Locale.FRANCE).dayOfWeek(), 1)
-                .withHour(0).withMinute(0);
-        LocalDateTime finSemaine = debutSemaine.plusDays(7).minusSeconds(1);
-
-        afficherListe(calendar.eventsDansPeriode(debutSemaine, finSemaine));
+        AffichageCalendrier.affichageFiltrer(scanner,1,calendar);
     }
 
     public void event_jour(CalendarManager calendar){
-        System.out.print("Entrez l'année (AAAA) : ");
-        int anneeJour = Integer.parseInt(scanner.nextLine());
-        System.out.print("Entrez le mois (1-12) : ");
-        int moisJour = Integer.parseInt(scanner.nextLine());
-        System.out.print("Entrez le jour (1-31) : ");
-        int jour = Integer.parseInt(scanner.nextLine());
-
-        LocalDateTime debutJour = LocalDateTime.of(anneeJour, moisJour, jour, 0, 0);
-        LocalDateTime finJour = debutJour.plusDays(1).minusSeconds(1);
-
-        afficherListe(calendar.eventsDansPeriode(debutJour, finJour));
+        AffichageCalendrier.affichageFiltrer(scanner,2,calendar);
     }
-
 
     //utilisataires
     private static void afficherListe(List<Event> evenements) {

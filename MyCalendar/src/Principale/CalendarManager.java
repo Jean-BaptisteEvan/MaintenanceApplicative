@@ -17,20 +17,20 @@ public class CalendarManager {
        this.events.ajoutEvent(event);
     }
 
-    public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-        List<Event> result = new ArrayList<>();
+    public ListEvent eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+        ListEvent result = new ListEvent();
         for (Event e : events.getEvents()) {
             if (e.type == EventType.PERIODIQUE) {
                 LocalDateTime temp = e.dateDebut.getDate();
                 while (temp.isBefore(fin)) {
                     if (!temp.isBefore(debut)) {
-                        result.add(e);
+                        result.ajoutEvent(e);
                         break;
                     }
                     temp = temp.plusDays(e.frequenceJours.getFrequence());
                 }
             } else if (!e.dateDebut.getDate().isBefore(debut) && !e.dateDebut.getDate().isAfter(fin)) {
-                result.add(e);
+                result.ajoutEvent(e);
             }
         }
         return result;
