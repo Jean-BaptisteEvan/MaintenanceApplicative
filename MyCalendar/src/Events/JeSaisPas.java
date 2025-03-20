@@ -3,10 +3,25 @@ package Events;
 import Principale.Event;
 import ValueObject.*;
 
+import java.time.LocalDateTime;
+
 public class JeSaisPas extends Event {
 
-    public JeSaisPas(EventType type, TitreEvent title, ProprioEvent proprietaire, DateEvent dateDebut, DureeEvent dureeMinutes, LieuEvent lieu, ListeParticipant participants, Frequence frequenceJours) {
-        super(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
+    public JeSaisPas() {
+        super(
+                EventType.JESAISPAS,
+                new TitreEvent("jesaispas"),
+                new ProprioEvent("lui_aussi_ne_sais_pas"),
+                new DateEvent(LocalDateTime.now()),
+                new DureeEvent(777),
+                new LieuEvent("l oeil de l'univers"),
+                new ListeParticipant(),
+                new Frequence(0)
+        );
     }
 
+    @Override
+    public String description() {
+        return "Si je la connaisait !";
+    }
 }
