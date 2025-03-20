@@ -14,7 +14,7 @@ public class Reunion extends Event {
         String str = "Réunion organisée par " + proprietaire + ", prévue le " + dateDebut + ", d'une durée de " + dureeMinutes + " minutes, au lieu " + lieu + " avec " ;
         StringBuilder participant = new StringBuilder();
         if (participants.getParticipants().isEmpty()){
-            return str + " personne.";
+            return str + "personne.";
         }
         for (Participant p : participants.getParticipants()){
             participant.append(p.getNom()).append(" ");
