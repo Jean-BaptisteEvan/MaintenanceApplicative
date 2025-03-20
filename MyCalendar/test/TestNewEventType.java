@@ -45,8 +45,8 @@ public class TestNewEventType {
                 )
         );
         ArrayList<Event> e = events.getEvents();
-        assertEquals("Réunion organisée par Pierre, prévue le 20 mars 2025 à 14h16, d'une durée de 2 heures, au lieu 107 avec personne", e.get(0).description());
-        assertEquals("Événement périodique organisé par Paul, prévu le 20 mars 2025 à 14h16", e.get(1).description());
+        assertEquals("Réunion organisée par Pierre, prévue le 20 mars 2025 à 14h16, d'une durée de 2 minutes, au lieu 107 avec personne.", e.get(0).description());
+        assertEquals("Événement périodique organisé par Paul, prévu le 20 mars 2025 à 14h16.", e.get(1).description());
         assertEquals("Rendez-vous avec Jacques, prévu le 20 mars 2025 à 14h16, d'une durée de 2.", e.get(2).description());
     }
 }

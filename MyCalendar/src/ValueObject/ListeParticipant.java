@@ -9,6 +9,10 @@ public class ListeParticipant {
         this.participants = new ArrayList<>();
     }
 
+    public ArrayList<Participant> getParticipants() {
+        return participants;
+    }
+
     public void addParticipant(Participant participant) {
         this.participants.add(participant);
     }
