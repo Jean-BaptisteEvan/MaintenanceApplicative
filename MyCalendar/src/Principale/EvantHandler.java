@@ -94,15 +94,19 @@ public class EvantHandler {
     }
 
     public void event_mois(CalendarManager calendar){
-        AffichageCalendrier.filtrerListeEvent(scanner,0,calendar).showListe();
+        System.out.println(AffichageCalendrier.filtrerListeEvent(scanner,0,calendar).showListe());
     }
 
     public void event_semaine(CalendarManager calendar){
-        AffichageCalendrier.filtrerListeEvent(scanner,1,calendar).showListe();
+        System.out.println(AffichageCalendrier.filtrerListeEvent(scanner,1,calendar).showListe());
     }
 
     public void event_jour(CalendarManager calendar){
-        AffichageCalendrier.filtrerListeEvent(scanner,2,calendar).showListe();
+        System.out.println(AffichageCalendrier.filtrerListeEvent(scanner,2,calendar).showListe());
+    }
+
+    public void event_periode(){
+
     }
 
     //utilisataires

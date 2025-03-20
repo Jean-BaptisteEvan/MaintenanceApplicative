@@ -14,14 +14,17 @@ public class CalendarManager {
     }
 
     public boolean ajouterEvent(Event event) {
-       this.events.ajoutEvent(event);
-       return true;
+        if (this.events.conflits(event)) {
+            return false;
+        }
+        this.events.ajoutEvent(event);
+        return true;
     }
 
     public ListEvent eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         ListEvent result = new ListEvent();
         for (Event e : events.getEvents()) {
-            if (e.type == EventType.PERIODIQUE) {
+            if (e.type == EventType.PERIODIQUE) { // Non refacto
                 LocalDateTime temp = e.dateDebut.getDate();
                 while (temp.isBefore(fin)) {
                     if (!temp.isBefore(debut)) {
@@ -30,22 +33,11 @@ public class CalendarManager {
                     }
                     temp = temp.plusDays(e.frequenceJours.getFrequence());
                 }
-            } else if (!e.dateDebut.getDate().isBefore(debut) && !e.dateDebut.getDate().isAfter(fin)) {
+            } else if (!e.dateDebut.getDate().isBefore(debut) && !e.dateDebut.getDate().isAfter(fin)) { // non refacto
                 result.ajoutEvent(e);
             }
         }
         return result;
-    }
-
-    public boolean conflit(Event e1, Event e2) {
-        LocalDateTime fin1 = e1.dateDebut.getDate().plusMinutes(e1.dureeMinutes.getDuree());
-        LocalDateTime fin2 = e2.dateDebut.getDate().plusMinutes(e2.dureeMinutes.getDuree());
-
-        if (e1.type == EventType.PERIODIQUE || e2.type == EventType.PERIODIQUE) {
-            return false; // Simplification abusive
-        }
-
-        return e1.dateDebut.getDate().isBefore(fin2) && fin1.isAfter(e2.dateDebut.getDate());
     }
 
     public void afficherEvenements() {
