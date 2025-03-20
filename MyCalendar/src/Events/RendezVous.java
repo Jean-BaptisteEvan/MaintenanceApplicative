@@ -8,6 +8,6 @@ public class RendezVous extends Event {
         super(EventType.RDV_PERSONNEL, title, proprietaire, dateDebut, dureeMinutes, new LieuEvent(""), new ListeParticipant(), new Frequence(0));
     }
 
-    //calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur, localDate, duree, "", "", 0);
+    //"Rendez-vous avec Jacques, prévu le 20 mars 2025 à 14h16, d'une durée de 2."
 
 }
