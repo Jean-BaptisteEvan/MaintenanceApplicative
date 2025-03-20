@@ -6,12 +6,9 @@ import Events.RendezVous;
 import Events.Reunion;
 import ValueObject.*;
 
-import java.io.LineNumberInputStream;
 import java.time.LocalDateTime;
-import java.time.temporal.WeekFields;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class EvantHandler {
@@ -49,7 +46,7 @@ public class EvantHandler {
         System.out.print("Titre de l'événement : ");
         TitreEvent titre = new TitreEvent(scanner.nextLine());
 
-        DateEvent localDate = new DateEvent();
+        DateEvent localDate = new DateEvent(makeDate());
 
         System.out.print("Durée (en minutes) : ");
         DureeEvent duree = new DureeEvent(scanner.nextInt());
@@ -62,7 +59,7 @@ public class EvantHandler {
         System.out.print("Titre de l'événement : ");
         TitreEvent titre = new TitreEvent(scanner.nextLine());
 
-        DateEvent localDate = new DateEvent();
+        DateEvent localDate = new DateEvent(makeDate());
 
         System.out.print("Durée (en minutes) : ");
         DureeEvent duree = new DureeEvent(scanner.nextInt());
@@ -86,8 +83,7 @@ public class EvantHandler {
     public void ajoutPeriodique(CalendarManager calendar, String utilisateur){
         System.out.print("Titre de l'événement : ");
         TitreEvent titre = new TitreEvent(scanner.nextLine());
-
-        DateEvent localDate = new DateEvent();
+        DateEvent localDate = new DateEvent(makeDate());
 
         System.out.print("Frequence (en jours) : ");
         Frequence freq = new Frequence(scanner.nextInt());
@@ -98,27 +94,30 @@ public class EvantHandler {
     }
 
     public void event_mois(CalendarManager calendar){
-        AffichageCalendrier.affichageFiltrer(scanner,0,calendar);
+        AffichageCalendrier.filtrerListeEvent(scanner,0,calendar).showListe();
     }
 
     public void event_semaine(CalendarManager calendar){
-        AffichageCalendrier.affichageFiltrer(scanner,1,calendar);
+        AffichageCalendrier.filtrerListeEvent(scanner,1,calendar).showListe();
     }
 
     public void event_jour(CalendarManager calendar){
-        AffichageCalendrier.affichageFiltrer(scanner,2,calendar);
+        AffichageCalendrier.filtrerListeEvent(scanner,2,calendar).showListe();
     }
 
     //utilisataires
-    private static void afficherListe(List<Event> evenements) {
-        if (evenements.isEmpty()) {
-            System.out.println("Aucun événement trouvé pour cette période.");
-        } else {
-            System.out.println("Événements trouvés : ");
-            for (Event e : evenements) {
-                System.out.println("- " + e.description());
-            }
-        }
+    private LocalDateTime makeDate() {
+        System.out.print("Année (AAAA) : ");
+        int annee = Integer.parseInt(scanner.nextLine());
+        System.out.print("Mois (1-12) : ");
+        int moisRdv = Integer.parseInt(scanner.nextLine());
+        System.out.print("Jour (1-31) : ");
+        int jourRdv = Integer.parseInt(scanner.nextLine());
+        System.out.print("Heure début (0-23) : ");
+        int heure = Integer.parseInt(scanner.nextLine());
+        System.out.print("Minute début (0-59) : ");
+        int minute = Integer.parseInt(scanner.nextLine());
+        return LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute);
     }
 
 }

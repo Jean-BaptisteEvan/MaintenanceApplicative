@@ -18,7 +18,7 @@ public class ListEvent {
         return listEvents;
     }
 
-    private void afficherListe() {
+    public void showListe() {
         if (listEvents.isEmpty()) {
             System.out.println("Aucun événement trouvé pour cette période.");
         } else {

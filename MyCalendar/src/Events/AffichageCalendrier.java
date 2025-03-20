@@ -1,19 +1,16 @@
 package Events;
 
 import Principale.CalendarManager;
-import Principale.Event;
 import Principale.ListEvent;
 
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class AffichageCalendrier {
     //Cette methode est horriblement mauvaise mais je ne souhaiter pas passer plus de temps sur le refactoring pour pouvoir avancer dans le projet
-    public static ListEvent affichageFiltrer(Scanner scanner, int control, CalendarManager calendar) {
+    public static ListEvent filtrerListeEvent(Scanner scanner, int control, CalendarManager calendar) {
         ListEvent events = new ListEvent();
         int mois = -1;
         int semaine = -1;
