@@ -13,8 +13,9 @@ public class CalendarManager {
         this.events = new ListEvent();
     }
 
-    public void ajouterEvent(Event event) {
+    public boolean ajouterEvent(Event event) {
        this.events.ajoutEvent(event);
+       return true;
     }
 
     public ListEvent eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
