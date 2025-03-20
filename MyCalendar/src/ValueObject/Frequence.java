@@ -11,4 +11,9 @@ public class Frequence {
     public int getFrequence() {
         return frequence;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(frequence);
+    }
 }

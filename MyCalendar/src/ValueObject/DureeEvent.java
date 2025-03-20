@@ -10,4 +10,9 @@ public class DureeEvent {
     public int getDuree() {
         return duree;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(duree);
+    }
 }

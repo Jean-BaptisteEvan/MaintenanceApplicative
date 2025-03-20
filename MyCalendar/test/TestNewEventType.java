@@ -1,7 +1,7 @@
 import Events.Periodique;
 import Events.RendezVous;
 import Events.Reunion;
-import Principale.CalendarManager;
+
 import Principale.Event;
 import Principale.ListEvent;
 import ValueObject.*;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

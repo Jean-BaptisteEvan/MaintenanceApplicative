@@ -15,4 +15,8 @@ public class DateEvent {
         return date;
     }
 
+    @Override
+    public String toString() {
+        return date.toString();
+    }
 }

@@ -10,4 +10,9 @@ public class LieuEvent {
     public String getLieu() {
         return lieu;
     }
+
+    @Override
+    public String toString() {
+        return lieu;
+    }
 }
